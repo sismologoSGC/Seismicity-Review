@@ -174,8 +174,8 @@ def read_data(l = ["","",""]):
 
 
 
-dest = [", Comment.text",", Comment","AND Comment._parent_oid = Event._oid"]
-
+dest = [", Comment.text",", Comment","AND Comment._parent_oid = Event._oid AND (Comment.text LIKE '%DESTACADO%' or Comment.text LIKE '%destacado%')"]
+#dest = [", Comment.text",", Comment","and Comment.text LIKE '%DESTACADO%'"]
 
 rect = ["","",f"AND Origin.latitude_value between {loc[0]} and {loc[1]} AND Origin.longitude_value between {loc[2]} AND {loc[3]} "]
 
@@ -200,7 +200,7 @@ data_destacados=read_data(dest)
 df_destacado = pd.DataFrame(data_destacados)
 df_destacado.index+=1
 df_destacado.index.name= 'N°'
-#df_destacado.to_csv(f'eventos_destacados{Fini}_{Ffin}.csv')
+df_destacado.to_csv(f'eventos_destacados{Fini}_{Ffin}.csv')
 
 nolocatable = len(df[ (df["Tipo"]=='not locatable')])
 #c_a_uno = df[ (df['Magnitud']>=0) & (df['Magnitud']<1) & (df["Tipo"] != "explosion") & (df["Tipo"] != "not locatable") & (df["Tipo"] != 'outside of network interest') ]

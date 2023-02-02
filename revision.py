@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #from importlib.resources import files
 import os
 import argparse
@@ -7,6 +8,7 @@ import utils as ut
 import datetime as dt
 import pandas as pd
 from colorama import init, Fore
+import numpy as np
 #import warnings
 
 #warnings.filterwarnings('ignore')
@@ -229,7 +231,7 @@ def normal_process(df,IDs,IDsen,user=None):
                                         comment= "Errores de localizacion alto".ljust(32," ")
                                         print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}{magnitude_type}{rms}"+Fore.RED+f" {erdep}{erlat}{erlon}"+Fore.WHITE+f" {fases}{aut} {tip} {agen}    {comment}   {ubic}")
                            
-                            if ev[8] != None and ev[1] not in suerr:
+                            if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                                 if int(ev[8]) >= 12  and ev[10] in errfa:
                                     if ut.inside_bna_polygon((longitude,latitude),volcanic_bna_folder) != True:
                                         conteo += 1
@@ -238,14 +240,14 @@ def normal_process(df,IDs,IDsen,user=None):
                                         print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}{magnitude_type}{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
                             
                             
-                            if ev[8] != None and ev[1] not in suerr:
+                            if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                                 if int(ev[8]) >= 7  and ev[10] not in errsi:
                                     if ut.test2((longitude,latitude),files_folder) == (True, 'zona1') and magnitude_type != mag1:
                                         conteo += 1
                                         comment= "Corregir magnitud con MLr_1".ljust(32," ")
                                         print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
                             
-                            if ev[8] != None and ev[1] not in suerr:
+                            if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                                 if int(ev[8]) >= 7  and ev[10] not in errsi:
                                     if ut.test2((longitude,latitude),files_folder) == (True, 'zona2') and magnitude_type != mag2:
                                         conteo += 1
@@ -253,7 +255,7 @@ def normal_process(df,IDs,IDsen,user=None):
                                         print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
 
                             
-                            if ev[8] != None and ev[1] not in suerr:
+                            if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                                 if int(ev[8]) >= 7  and ev[10] not in errsi:
                                     if ut.test2((longitude,latitude),files_folder) == (True, 'zona3') and magnitude_type != mag3:
                                         conteo += 1
@@ -261,40 +263,40 @@ def normal_process(df,IDs,IDsen,user=None):
                                         print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
 
 
-                            if ev[8] != None and ev[1] not in suerr:
+                            if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                                 if int(ev[8]) >= 7  and ev[10] not in errsi:
                                     if ut.test2((longitude,latitude),files_folder) == (True, 'zona4') and magnitude_type != mag4:
                                         conteo += 1
                                         comment= "Corregir magnitud con MLr_4".ljust(32," ")
                                         print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
                             
-                            if ev[8] != None and ev[1] not in suerr:
+                            if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                                 if int(ev[8]) >= 7  and ev[10] not in errsi:
                                     if ut.test2((longitude,latitude),files_folder) == (True, 'zona5') and magnitude_type != mag5:
                                         conteo += 1
                                         comment= "Corregir magnitud con MLr_5".ljust(32," ")
                                         print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
                             
-                            if ev[8] != None and ev[1] not in suerr:
+                            if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                                 if int(ev[8]) >= 7  and ev[10] not in errsi:
                                     if ut.test2((longitude,latitude),files_folder) == (True, 'zona_vmm') and magnitude_type != magvmm:
                                         conteo += 1
                                         comment= "Corregir magnitud con MLr_vmm".ljust(32," ")
                                         print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
 
-                            if ev[8] != None and ev[1] not in suerr:
+                            if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                                 if int(ev[8]) >= 7  and ev[10] not in errsi:
                                     if ut.test2((longitude,latitude),files_folder) == (True, 'zona_vmm') and earthModel_type != "VMM":
                                         conteo += 1
                                         comment= "Corregir modelo con VMM".ljust(32," ")
                                         print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                            if ev[8] != None and ev[1] not in suerr:
+                            if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                                 if int(ev[8]) >= 7  and ev[10] not in errsi and ev[10] != "explosion":
                                     if ut.test2((longitude,latitude),files_folder) == (True, 'Modelo_CARMA') and earthModel_type != "CARMA":
                                         conteo += 1
                                         comment= "Corregir modelo con CARMA".ljust(32," ")
                                         print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                            if ev[8] != None and ev[1] not in suerr:
+                            if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                                 if int(ev[8]) >= 7  and ev[10] not in errsi and ev[10] != "explosion":
                                     if ut.test2((longitude,latitude),files_folder) == (True, 'Modelo_Cesar') and earthModel_type != "modelCesar2":
                                         conteo += 1
@@ -368,7 +370,8 @@ def normal_process(df,IDs,IDsen,user=None):
                                 errloc += f"{fe} {ID} {dep}{mag}{magnitude_type}"+Fore.RED+f"{rms}"+f" {erdep}{erlat}{erlon} {fases}{aut} {tip} {agen}\n"
                                 comment= "Errores de localizacion alto".ljust(32," ")
                                 print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}{magnitude_type}{rms}"+Fore.RED+f" {erdep}{erlat}{erlon}"+Fore.WHITE+f" {fases}{aut} {tip} {agen}    {comment}   {ubic}")
-                    if ev[8] != None and ev[1] not in suerr:
+                    
+                    if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                             if int(ev[8]) >= 12  and ev[10] in errfa:
                                 if ut.inside_bna_polygon((longitude,latitude),volcanic_bna_folder) != True:
                                     print("ACAAA",ut.inside_bna_polygon((longitude,latitude),volcanic_bna_folder))
@@ -376,55 +379,55 @@ def normal_process(df,IDs,IDsen,user=None):
                                     errfases += f"{fe} {ID} {dep}{mag}{magnitude_type}"+Fore.RED+f"{rms}"+f" {erdep}{erlat}{erlon} {fases}{aut} {tip} {agen}\n"
                                     comment= "Evento localizable".ljust(32," ")
                                     print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}{magnitude_type}{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                    if ev[8] != None and ev[1] not in suerr:
+                    if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                             if int(ev[8]) >= 7  and ev[10] not in errsi:
                                 if ut.test2((longitude,latitude),files_folder) == (True, 'zona1') and magnitude_type != mag1:
                                     conteo += 1
                                     comment= "Corregir magnitud con MLr_1".ljust(32," ")
                                     print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                    if ev[8] != None and ev[1] not in suerr:
+                    if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                             if int(ev[8]) >= 7  and ev[10] not in errsi:
                                 if ut.test2((longitude,latitude),files_folder) == (True, 'zona2') and magnitude_type != mag2:
                                     conteo += 1
                                     comment= "Corregir magnitud con MLr_2".ljust(32," ")
                                     print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                    if ev[8] != None and ev[1] not in suerr:
+                    if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                             if int(ev[8]) >= 7  and ev[10] not in errsi:
                                 if ut.test2((longitude,latitude),files_folder) == (True, 'zona3') and magnitude_type != mag3:
                                     conteo += 1
                                     comment= "Corregir magnitud con MLr_3".ljust(32," ")
                                     print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                    if ev[8] != None and ev[1] not in suerr:
+                    if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                             if int(ev[8]) >= 7  and ev[10] not in errsi:
                                 if ut.test2((longitude,latitude),files_folder) == (True, 'zona4') and magnitude_type != mag4:
                                     conteo += 1
                                     comment= "Corregir magnitud con MLr_4".ljust(32," ")
                                     print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                    if ev[8] != None and ev[1] not in suerr:
+                    if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                             if int(ev[8]) >= 7  and ev[10] not in errsi:
                                 if ut.test2((longitude,latitude),files_folder) == (True, 'zona5') and magnitude_type != mag5:
                                     conteo += 1
                                     comment= "Corregir magnitud con MLr_5".ljust(32," ")
                                     print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                    if ev[8] != None and ev[1] not in suerr:
+                    if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                             if int(ev[8]) >= 7  and ev[10] not in errsi:
                                 if ut.test2((longitude,latitude),files_folder) == (True, 'zona_vmm') and magnitude_type != magvmm:
                                     conteo += 1
                                     comment= "Corregir magnitud con MLr_vmm".ljust(32," ")
                                     print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                    if ev[8] != None and ev[1] not in suerr:
+                    if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                             if int(ev[8]) >= 7  and ev[10] not in errsi:
                                 if ut.test2((longitude,latitude),files_folder) == (True, 'zona_vmm') and earthModel_type != "VMM":
                                     conteo += 1
                                     comment= "Corregir modelo con VMM".ljust(32," ")
                                     print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                    if ev[8] != None and ev[1] not in suerr:
+                    if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                             if int(ev[8]) >= 7  and ev[10] not in errsi and ev[10] != "explosion":
                                 if ut.test2((longitude,latitude),files_folder) == (True, 'Modelo_CARMA') and earthModel_type != "CARMA":
                                     conteo += 1
                                     comment= "Corregir modelo con CARMA".ljust(32," ")
                                     print(Fore.GREEN+f"{fe}"+Fore.WHITE+f" {ID} {dep}{mag}"+Fore.RED+f"{magnitude_type}"+Fore.WHITE+f"{rms} {erdep}{erlat}{erlon}"+Fore.RED+f" {fases}"+Fore.WHITE+f"{aut} {tip} {agen}    {comment}   {ubic}")
-                    if ev[8] != None and ev[1] not in suerr:
+                    if ev[8] != None and np.isnan(ev[8]) == False and ev[1] not in suerr:
                             if int(ev[8]) >= 7  and ev[10] not in errsi and ev[10] != "explosion":
                                 if ut.test2((longitude,latitude),files_folder) == (True, 'Modelo_Cesar') and earthModel_type != "modelCesar2":
                                     conteo += 1
